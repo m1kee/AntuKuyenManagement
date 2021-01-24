@@ -19,7 +19,8 @@ export class ProductCrudPage implements OnInit {
 
   saveProduct() {
     this.modalController.dismiss({
-      id: 'soy un producto'
+      id: 'soy un producto',
+      name: 'Producto de prueba'
     });
   }
 }
