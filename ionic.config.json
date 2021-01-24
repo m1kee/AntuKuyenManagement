@@ -1,5 +1,7 @@
 {
-  "name": "AntuKuyenManagement",
-  "integrations": {},
-  "type": "angular"
+    "name": "AntuKuyenManagement",
+    "integrations": {
+        "capacitor": {}
+    },
+    "type": "angular"
 }
