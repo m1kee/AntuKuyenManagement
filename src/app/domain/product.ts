@@ -11,4 +11,8 @@ export class Product {
     canGoToFind: boolean;
     price: number;
     active: boolean;
+
+    constructor() {
+    }
+    
 }

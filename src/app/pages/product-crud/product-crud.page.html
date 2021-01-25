@@ -10,48 +10,73 @@
 </ion-header>
 
 <ion-content>
-    <ion-list class="ion-margin">
-        <ion-item>
-            <ion-label position="stacked">Nombre</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Descripción</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Color</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Link</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Precio por mayor</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Prendas por mayor</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Precio envío</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Se puede ir a buscar</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Precio</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-        <ion-item>
-            <ion-label position="stacked">Activo</ion-label>
-            <ion-input></ion-input>
-        </ion-item>
-    </ion-list>
+    <ion-grid>
+        <ion-row>
+            <ion-col size-xs="12" size-lg="6">
+                <ion-item>
+                    <ion-label position="stacked"> Nombre </ion-label>
+                    <ion-input type="text" [(ngModel)]="product.name" name="name"></ion-input>
+                </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="12" size-lg="6">
+                <ion-item>
+                    <ion-label position="stacked"> Descripción </ion-label>
+                    <ion-input type="text" [(ngModel)]="product.description" name="description"></ion-input>
+                </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="12" size-lg="6">
+                <ion-item>
+                    <ion-label position="stacked"> Link </ion-label>
+                    <ion-input type="url" [(ngModel)]="product.link" name="link"></ion-input>
+                </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="12" size-lg="6">
+                <ion-item>
+                    <ion-label position="stacked"> Precio por mayor </ion-label>
+                    <ion-input type="number" [(ngModel)]="product.wholesalePrice" name="wholesalePrice"></ion-input>
+                </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="12" size-lg="6">
+                <ion-item>
+                    <ion-label position="stacked"> Prendas por mayor </ion-label>
+                    <ion-input type="number" [(ngModel)]="product.wholesaleGarments" name="wholesaleGarments"></ion-input>
+                </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="12" size-lg="6">
+                <ion-item>
+                    <ion-label position="stacked"> Precio envío </ion-label>
+                    <ion-input type="number" [(ngModel)]="product.sendPrice" name="sendPrice"></ion-input>
+                </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="12" size-lg="6">
+                <ion-item>
+                    <ion-label position="stacked"> Se puede ir a buscar </ion-label>
+                    <ion-checkbox [(ngModel)]="product.canGoToFind" name="canGoToFind"></ion-checkbox>
+                </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="12" size-lg="6">
+                <ion-item>
+                    <ion-label position="stacked"> Precio </ion-label>
+                    <ion-input type="number" [(ngModel)]="product.price" name="price"></ion-input>
+                </ion-item>
+            </ion-col>
+
+            <ion-col size-xs="12" size-lg="6">
+                <ion-item>
+                    <ion-label position="stacked"> Activo </ion-label>
+                    <ion-checkbox [(ngModel)]="product.active" name="active"></ion-checkbox>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 
     <ion-button class="ion-margin" expand="block" (click)="saveProduct()">
         Guardar

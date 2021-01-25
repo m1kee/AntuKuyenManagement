@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Product } from 'src/app/domain/domain';
 
 @Component({
   selector: 'app-product-crud',
@@ -7,6 +8,8 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./product-crud.page.scss'],
 })
 export class ProductCrudPage implements OnInit {
+
+  product: Product = new Product(); 
 
   constructor(private modalController: ModalController) { }
 
@@ -22,5 +25,9 @@ export class ProductCrudPage implements OnInit {
       id: 'soy un producto',
       name: 'Producto de prueba'
     });
+  }
+
+  onColorChange($event) {
+    console.log('onColorChange: ', $event);
   }
 }
