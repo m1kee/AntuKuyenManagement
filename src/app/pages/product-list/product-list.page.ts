@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Product } from 'src/app/domain/domain';
 import { ProductCrudPage } from '../product-crud/product-crud.page';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -11,10 +12,19 @@ import { ProductCrudPage } from '../product-crud/product-crud.page';
 export class ProductListPage implements OnInit {
 
   products: Product[] = [];
+  onlyActive: boolean = true;
   
-  constructor(private modalController: ModalController) { }
+  constructor(private modalController: ModalController, private productService: ProductService) { }
 
   ngOnInit() {
+   this.getProducts(); 
+  }
+
+  async getProducts() {
+    this.productService.get(this.onlyActive).subscribe((products:Product[]) => {
+      // console.log('products: ', products);
+      this.products = products;
+    });
   }
 
   async openProductModal(product: Product) {
@@ -25,20 +35,11 @@ export class ProductListPage implements OnInit {
       }
     });
 
-    modal.onWillDismiss().then((product) => {
-      if (product.data){
-        let index = this.products.findIndex((c) => c.id === product.data.id);
-
-        if (index > -1){
-          this.products.splice(index, 1, product.data);
-        }
-        else {
-          this.products = [...this.products, product.data];
-        }
-        
-      }
-    });
-
     await modal.present();
+  };
+
+  async onOnlyActiveChange() {
+    // console.log('onOnlyActiveChange');
+    this.getProducts();
   }
 }

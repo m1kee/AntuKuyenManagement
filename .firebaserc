@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "antukuyenmanagement": {
+      "hosting": {
+        "app": [
+          "antukuyenmanagement"
+        ]
+      }
+    }
+  }
+}

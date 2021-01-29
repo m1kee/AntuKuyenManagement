@@ -1,10 +1,7 @@
+import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
-import { IonicModule } from '@ionic/angular';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProductCrudPageRoutingModule } from './product-crud-routing.module';
 
@@ -12,11 +9,11 @@ import { ProductCrudPage } from './product-crud.page';
 
 @NgModule({
   imports: [
+    IonicModule,
     CommonModule,
     FormsModule,
-    IonicModule,
-    ProductCrudPageRoutingModule,
-    FontAwesomeModule
+    ReactiveFormsModule,
+    ProductCrudPageRoutingModule
   ],
   declarations: [ProductCrudPage]
 })

@@ -3,20 +3,35 @@
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
         </ion-buttons>
-        <ion-title>Catálogo de productos</ion-title>
+        <ion-title>Catálogo</ion-title>
     </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content fullscreen>
     <ion-header collapse="condense">
         <ion-toolbar>
-            <ion-title size="large">Catálogo de productos</ion-title>
+            <ion-title size="large">Catálogo</ion-title>
         </ion-toolbar>
     </ion-header>
 
+    <ion-item lines="none">
+        <ion-label class="ion-text-end"> Solo activos </ion-label>
+        <ion-toggle slot="end" name="onlyActive" checked [(ngModel)]="onlyActive" (ionChange)="onOnlyActiveChange()">
+        </ion-toggle>
+    </ion-item>
+
     <ion-list *ngIf="products && products.length > 0">
-        <ion-item *ngFor="let product of products">
-            {{product.name}}
+        <ion-list-header lines="inset">
+            <ion-label>Productos</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let product of products" (click)="openProductModal(product)">
+            <ion-label>
+                <h2> {{product.name}} </h2>
+                <h3> {{product.price | currency:'CLP'}} </h3>
+                <p> {{product.description}} </p>
+            </ion-label>
+
+            <ion-badge slot="end" [color]="product.stock > 6 ? 'success' : product.stock <= 6 && product.stock >= 4 ? 'warning' : 'danger'">{{product.stock}}</ion-badge>
         </ion-item>
     </ion-list>
 

@@ -5,8 +5,8 @@
                 <ion-list id="inbox-list">
                     <ion-img src="assets/icon/logo.png" style="width: 50%; height: auto; margin: auto;" class="ion-padding-bottom"></ion-img>
 
-                    <ion-list-header>Michael Núñez</ion-list-header>
-                    <ion-note>michael.nunezb@outlook.com</ion-note>
+                    <!-- <ion-list-header>Michael Núñez</ion-list-header>
+                    <ion-note>michael.nunezb@outlook.com</ion-note> -->
 
                     <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
                         <ion-item (click)="selectedIndex = i" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" [class.selected]="selectedIndex == i">
