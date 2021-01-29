@@ -25,6 +25,7 @@ import { ProductCrudPage } from './pages/product-crud/product-crud.page';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 @NgModule({
   declarations: [AppComponent, ProductCrudPage],
@@ -37,7 +38,8 @@ import { environment } from '../environments/environment';
     AppRoutingModule,
     FontAwesomeModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,

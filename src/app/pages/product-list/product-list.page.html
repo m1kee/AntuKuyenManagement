@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-    <ion-toolbar>
+    <ion-toolbar color="primary">
         <ion-buttons slot="start">
-            <ion-menu-button></ion-menu-button>
+            <ion-menu-button color="light"></ion-menu-button>
         </ion-buttons>
         <ion-title>Catálogo</ion-title>
     </ion-toolbar>
@@ -22,13 +22,25 @@
 
     <ion-list *ngIf="products && products.length > 0">
         <ion-list-header lines="inset">
-            <ion-label>Productos</ion-label>
+            <ion-label>
+                <strong>Productos</strong>
+            </ion-label>
         </ion-list-header>
         <ion-item *ngFor="let product of products" (click)="openProductModal(product)">
             <ion-label>
                 <h2> {{product.name}} </h2>
-                <h3> {{product.price | currency:'CLP'}} </h3>
-                <p> {{product.description}} </p>
+                <h3>
+                    <b style="margin-right: 5px;">{{product.price | currency:'CLP'}}</b>
+                    <ion-text color="success">
+                        <fa-icon icon="angle-double-up"></fa-icon> {{calculateProfit(product) | number : '1.2-2'}}%
+                    </ion-text>
+                </h3>
+                <p> <i>{{product.description}}</i> </p>
+                <p>
+                    <ion-chip color="primary" *ngIf="product.canGoToFind">
+                        <fa-icon icon="truck"></fa-icon>
+                    </ion-chip>
+                </p>
             </ion-label>
 
             <ion-badge slot="end" [color]="product.stock > 6 ? 'success' : product.stock <= 6 && product.stock >= 4 ? 'warning' : 'danger'">{{product.stock}}</ion-badge>
@@ -45,7 +57,7 @@
         </p>
     </div>
 
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="openProductModal()">
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="openProductModal(null)">
         <ion-fab-button>
             <fa-icon icon="plus" size="lg"></fa-icon>
         </ion-fab-button>
